@@ -1,71 +1,69 @@
-<?php //src/Entity/Affiliate.php
+<?php
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
 class Affiliate
 {
+    /** @var int */
     private $id;
-    private $categories; // tableau d'objet Category
+
+    /** @var Category[] */
+    private $categories;
+
+    /** @var string */
     private $url;
+
+    /** @var string */
     private $email;
+
+    /** @var string */
     private $token;
+
+    /** @var bool */
     private $isActive;
+
+    /** @var DateTime */
     private $createdAt;
 
-    public function __construct(){
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
         $this->categories = new ArrayCollection();
     }
 
-    public function setCreatedAtValue(LifecycleEventArgs $event)
-    {
-        $this->createdAt = new DateTime();
-    }
-
     /**
-     * Get the value of url
-     */ 
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set the value of url
+     * Get ID
      *
-     * @return  self
-     */ 
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Get the value of categories
-     */ 
-    public function getCategories()
+     * Get categories
+     *
+     * @return array
+     */
+    public function getCategories(): array
     {
         return $this->categories;
     }
 
     /**
-     * Set the value of categories
+     * Set categories
      *
-     * @return  self
-     */ 
-    public function setCategories($categories)
+     * @param array $categories
+     * @return Affiliate
+     */
+    public function setCategories(array $categories): self
     {
         $this->categories = $categories;
 
@@ -73,39 +71,45 @@ class Affiliate
     }
 
     /**
-     * Get the value of token
-     */ 
-    public function getToken()
+     * Get URL
+     *
+     * @return string
+     */
+    public function getUrl(): string
     {
-        return $this->token;
+        return $this->url;
     }
 
     /**
-     * Set the value of token
+     * Set URL
      *
-     * @return  self
-     */ 
-    public function setToken($token)
+     * @param string $url
+     * @return Affiliate
+     */
+    public function setUrl(string $url): self
     {
-        $this->token = $token;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get the value of email
-     */ 
-    public function getEmail()
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * Set the value of email
+     * Set email
      *
-     * @return  self
-     */ 
-    public function setEmail($email)
+     * @param string $email
+     * @return Affiliate
+     */
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -113,18 +117,69 @@ class Affiliate
     }
 
     /**
-     * Get the value of isActive
-     */ 
-    public function getIsActive()
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Affiliate
+     */
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return bool
+     */
+    public function isActive(): bool
     {
         return $this->isActive;
     }
 
     /**
-     * Get the value of createdAt
-     */ 
-    public function getCreatedAt()
+     * Set isActive
+     *
+     * @param bool $isActive
+     * @return Affiliate
+     */
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set createAt
+     *
+     * @param LifecycleEventArgs $event
+     * @return Affiliate
+     */
+    public function setCreatedAtValue(LifecycleEventArgs $event): self
+    {
+        $this->createdAt = new DateTime();
+
+        return $this;
     }
 }

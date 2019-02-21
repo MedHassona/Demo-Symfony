@@ -1,44 +1,59 @@
-<?php //src/Entity/Category.php
+<?php
 
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class Category{
+class Category
+{
+    /** @var int */
     private $id;
-    private $name;
-    private $jobs; // tableau d'objet Job
-    private $affiliates; // tableau d'objet Affiliate
 
+    /** @var string */
+    private $name;
+
+    /** @var Job[] */
+    private $jobs;
+
+    /** @var Affiliate[] */
+    private $affiliates;
+
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-        $this->jobes = new ArrayCollection();
+        $this->jobs = new ArrayCollection();
         $this->affiliates = new ArrayCollection();
     }
 
-
     /**
-     * Get the value of id
-     */ 
-    public function getId()
+     * Get ID
+     *
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Get the value of name
-     */ 
-    public function getName()
+     * Get name
+     *
+     * @return string
+     */
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * Set the value of name
+     * Set name
      *
-     * @return  self
-     */ 
-    public function setName($name)
+     * @param string $name
+     * @return Category
+     */
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -46,19 +61,22 @@ class Category{
     }
 
     /**
-     * Get the value of jobs
-     */ 
-    public function getJobs()
+     * Get jobs
+     *
+     * @return array
+     */
+    public function getJobs(): array
     {
         return $this->jobs;
     }
 
     /**
-     * Set the value of jobs
+     * Get jobs
      *
-     * @return  self
-     */ 
-    public function setJobs($jobs)
+     * @param array $jobs
+     * @return Category
+     */
+    public function setJobs(array $jobs): self
     {
         $this->jobs = $jobs;
 
@@ -66,19 +84,22 @@ class Category{
     }
 
     /**
-     * Get the value of affiliates
-     */ 
-    public function getAffiliates()
+     * Get affiliates
+     *
+     * @return Affiliate[]
+     */
+    public function getAffiliates(): array
     {
         return $this->affiliates;
     }
 
     /**
-     * Set the value of affiliates
+     * Set affiliates
      *
-     * @return  self
-     */ 
-    public function setAffiliates($affiliates)
+     * @param Affiliate[] $affiliates
+     * @return Category
+     */
+    public function setAffiliates(array $affiliates): self
     {
         $this->affiliates = $affiliates;
 

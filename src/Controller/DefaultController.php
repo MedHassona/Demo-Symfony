@@ -1,20 +1,17 @@
-<?php // src/Controller/DefaultController.php
+<?php  // src/Controller/DefaultController.php
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController{
-
-    private $twig;
-
-    public function __construct(Environment $twig)
+class DefaultController extends AbstractController
+{
+    public function index(Request $request): Response
     {
-        $this->twig = $twig;
-    }
-    public function index(Request $request) : Response
-    {
-        return new Response('Accueil - Hello '.$request->get('name'));
+        return $this->render('home.html.twig', [
+            'name' => $request->get('name', 'World')
+        ]);
     }
 }
